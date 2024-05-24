@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AtmoSphere</string>
+    <string name="close_button">Close Button</string>
+    <string name="search_button">Search Button</string>
+    <string name="cities_button">Cities Button</string>
+    <string name="weather_icon">Weather Icon</string>
 </resources>

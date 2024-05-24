@@ -43,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.13"
     }
     packaging {
         resources {
@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -69,6 +70,10 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // ConstraintLayout for Jetpack Compose
+    implementation (libs.androidx.constraintlayout.compose)
+
 
 
     // Compose Navigation
@@ -102,4 +107,10 @@ dependencies {
     ksp(libs.hilt.ext.compiler)
     implementation(libs.androidx.work.ktx)
     implementation(libs.androidx.hilt.navigation.compose)
+
+
+    // Coil
+    implementation(libs.coil.compose)
+
+
 }

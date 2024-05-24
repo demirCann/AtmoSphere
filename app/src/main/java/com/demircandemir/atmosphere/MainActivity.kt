@@ -1,47 +1,52 @@
 package com.demircandemir.atmosphere
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.annotation.RequiresApi
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.demircandemir.atmosphere.navigation.SetupNavGraph
 import com.demircandemir.atmosphere.ui.theme.AtmoSphereTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    private lateinit var navController: NavHostController
+
+//    @Inject
+//    lateinit var prepopulateDatabase: PrepopulateDatabase
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         setContent {
             AtmoSphereTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                navController = rememberNavController()
+
+                Scaffold {
+//                    SetupNavGraph(navController = navController)
+//                    HorizontalPager()
+                    SetupNavGraph(navController = navController)
                 }
+
             }
         }
+
+
+//        lifecycleScope.launch {
+//            prepopulateDatabase.prepopulateDatabase()
+//
+//        }
+
+
+
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AtmoSphereTheme {
-        Greeting("Android")
-    }
-}
